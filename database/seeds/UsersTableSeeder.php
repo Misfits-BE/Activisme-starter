@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             $arrayRoles = explode(',', $inputRoles); // Explode roles from array. BOOM! 
 
             foreach ($arrayRoles as $role) { // Add roles in the sys. And attach them to a created user.
-                $entityRole = $roles->firstOrCreate(['name' => trim($role)]);
+                $entityRole = $roles->firstOrCreate(['name' => trim($role)]); // TODO: Implement repository function
 
                 if ($this->roleIsAdmin($role)) {
                     $entityRole->syncPermissions($permissions->all()); 

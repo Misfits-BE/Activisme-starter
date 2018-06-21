@@ -5,6 +5,7 @@ namespace ActivismeBe;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class User
@@ -32,4 +33,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Method for salting the password in the database 
+     * 
+     * @param  string $password The given or generated password from the application/form
+     * @return void
+     */
+    public function setPasswordAttribute(string $password): void 
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 }

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -34,7 +34,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('starter-translations::navigation.backend.users') }}
+                            </a>
+                            
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">{{ __('starter-translations::navigation.backend.team') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('starter-translations::navigation.backend.users') }}</a>
+                            </div>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('starter-translations::navigation.backend.fragments') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('starter-translations::navigation.backend.logs') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('starter-translations::navigation.backend.contact-form') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -56,7 +77,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-power-off"></i>
+                                    <i class="fas fa-power-off text-danger"></i>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
