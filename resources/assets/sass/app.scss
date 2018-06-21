@@ -3,10 +3,10 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+@import "_variables/variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// 3th party libraries
+@import '~bootstrap/scss/bootstrap'; // Bootstrap
 
 // Typography ===================================================================
 @import url($web-font-path);
