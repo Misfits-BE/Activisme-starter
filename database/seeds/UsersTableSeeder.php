@@ -24,11 +24,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run(UserRepository $users, PermissionRepository $permissions, RoleRepository $roles): void
     {
-        $this->command->info(__('database.permissions-added'));
+        $this->command->info(__('starter-translations::database.permissions-added'));
 
         // Ask that the default roles need to be added. default = no
-        if ($this->command->confirm(__('database.ask-roles-default'))) {
-            $inputRoles = $this->command->ask(__('database.ask-roles-user'), 'admin,user'); // Ask for user specific application roles
+        if ($this->command->confirm(__('starter-translations::database.ask-roles-default'), true)) {
+            $inputRoles = $this->command->ask(__('starter-translations::database.ask-roles-user'), 'admin,user'); // Ask for user specific application roles
             $arrayRoles = explode(',', $inputRoles); // Explode roles from array. BOOM! 
 
             foreach ($arrayRoles as $role) { // Add roles in the sys. And attach them to a created user.
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
 
                 if ($this->roleIsAdmin($role)) {
                     $entityRole->syncPermissions($permissions->all()); 
-                    $this->command->info(__('database.perms-synced-admin'));
+                    $this->command->info(__('starter-translations::database.perms-synced-admin'));
                 } else { // Other default roles has by default only read access
                     $entityRole->syncPermissions($permissions->findAllBy('name', 'like', 'view_%'));
                 }
@@ -44,14 +44,14 @@ class UsersTableSeeder extends Seeder
                 $this->createUser($role); // Create new user for each role
             } // End roles foreach loop
 
-            $this->command->info(__('database.role-created-info', ['roles' => $inputRoles]));
+            $this->command->info(__('starter-translations::database.role-created-info', ['roles' => $inputRoles]));
         } else { //: Implement only the default user role
             if ($roles->entity()->where('name', 'user')->count() > 0) { // Check if the role doesn't exist already in the database
                 // Role doesn't exist in the database so add the role.
                 $roles->create(['name' => 'user']);
-                $this->command->info(__('database.only-default-role-added'));
+                $this->command->info(__('starter-translations::database.only-default-role-added'));
             } else { // Role exists already
-                $this->command->error(__('database.no-roles-added'));
+                $this->command->error(__('starter-translations::database.no-roles-added'));
             }
         }
     }
@@ -78,9 +78,9 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create(['password' => 'secret'])->assignRole($role);
 
         if ($this->roleIsAdmin($role)) {
-            $this->command->info(__('database.user-admin-role'));
+            $this->command->info(__('starter-translations::database.user-admin-role'));
             $this->command->warn($user->email); 
-            $this->command->warn(__('database.default-password'));
+            $this->command->warn(__('starter-translations::database.default-password'));
         }
     }
 }

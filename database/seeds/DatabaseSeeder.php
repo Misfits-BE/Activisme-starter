@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Ask for db migration refresh, default is no 
-        if ($this->command->confirm('database.ask-refresh')) {
+        if ($this->command->confirm(__('starter-translations::database.ask-refresh'))) {
             // Call the php artisan migrate:refresh command
             $this->command->call('migrate:refresh');
-            $this->command->warn(__('database.cleared-database'));
+            $this->command->warn(__('starter-translations::database.cleared-database'));
         }
 
         // Execute other database seeds 

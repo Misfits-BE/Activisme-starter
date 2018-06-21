@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "misfits/starter",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
@@ -10,6 +10,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "misfits/starter-translations": "dev-master",
         "spatie/laravel-permission": "^2.12"
     },
     "require-dev": {
