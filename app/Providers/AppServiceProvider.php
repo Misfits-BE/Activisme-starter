@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace ActivismeBe\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
