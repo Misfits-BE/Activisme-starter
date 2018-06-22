@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Users Routes
-Route::get('/users', 'Backend\UsersController@index')->name('admin.users.index');
+Route::get('/admin/users', 'Backend\UsersController@index')->name('admin.users.index');
+Route::get('/admin/users/create', 'Backend\usersController@create')->name('admin.users.create');

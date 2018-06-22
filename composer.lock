@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce042886180d288ae93f05b6a1313695",
-    "content-hash": "168f9414772f9a6301cad4532c80a9e2",
+    "hash": "fcda464f7df19da1909ec97ae75bb0fe",
+    "content-hash": "a4c78f486435687c4d5e9a768f42df9b",
     "packages": [
         {
             "name": "activismebe/database-layering",
@@ -64,6 +64,63 @@
                 "repository"
             ],
             "time": "2018-04-08 21:32:31"
+        },
+        {
+            "name": "activismebe/laravel-form-helpers",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CPSB/Validation-helper.git",
+                "reference": "adb91cb42b7e3c1f88be059a8b4f86de5aba64cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CPSB/Validation-helper/zipball/adb91cb42b7e3c1f88be059a8b4f86de5aba64cc",
+                "reference": "adb91cb42b7e3c1f88be059a8b4f86de5aba64cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "laravel/laravel": "~5.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ActivismeBE\\FormHelper\\FormServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ActivismeBE\\FormHelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Joosten",
+                    "email": "tim@activisme.be"
+                }
+            ],
+            "description": "Handle form model binding, old input binding and validation error messages in a clean easy way.",
+            "keywords": [
+                "eloquent",
+                "form",
+                "helpers",
+                "html",
+                "input",
+                "laravel",
+                "session",
+                "validation"
+            ],
+            "time": "2017-11-17 23:32:24"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

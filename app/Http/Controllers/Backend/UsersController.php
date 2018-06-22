@@ -32,4 +32,14 @@ class UsersController extends Controller
     {
         return view('users.index', ['users' => $this->users->getUsersRole('user')]);
     }
+
+    /**
+     * Display the create view for a new login in the application. 
+     * 
+     * @return View
+     */
+    public function create(): View 
+    {
+        return view('users.create');
+    }
 }

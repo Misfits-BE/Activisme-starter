@@ -14,7 +14,7 @@
 
             <div class="col-9">
                 <div class="card card-body">
-                    <h6 class="border-bottom border-gray pb-2 mb-3"><strong>{{ __('starter-translations::users.titles.overview') }}</strong></h6>
+                    <h6 class="border-bottom border-gray pb-2 mb-3">{{ __('starter-translations::users.titles.overview') }}</h6>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-sm">
@@ -52,11 +52,7 @@
             </div>
 
             <div class="col-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action disabled">
-                        <i class="fas fa-fw mr-1 fa-user-plus"></i> {{ __('starter-translations::users.add-user') }}
-                    </a>
-                </div>
+                @include ('users.partials.navigation')
             </div>
         </div>
     </div>
