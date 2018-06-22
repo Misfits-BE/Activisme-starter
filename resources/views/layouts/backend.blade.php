@@ -41,7 +41,9 @@
                             
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">{{ __('starter-translations::navigation.backend.team') }}</a>
-                                <a class="dropdown-item" href="#">{{ __('starter-translations::navigation.backend.users') }}</a>
+                                <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                                    {{ __('starter-translations::navigation.backend.users') }}
+                                </a>
                             </div>
                         </li>
 
@@ -90,7 +92,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-3">
             @yield('content')
         </main>
     </div>

@@ -5,6 +5,7 @@ namespace ActivismeBe\Repositories;
 use ActivismeBe\User;
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Eloquent\Repository;
+use Illuminate\Pagination\Paginator;
 
 /**
  * Class UserRepository
@@ -26,5 +27,16 @@ class UserRepository extends Repository
     public function model(): string
     {
         return User::class;
+    }
+
+    /**
+     * Get all the users based on the given ACl permission role
+     * 
+     * @param  string $name The name for the ACL permission role.
+     * @return Paginator
+     */
+    public function getUsersRole(string $name): Paginator
+    {
+        return $this->model->role($name)->simplePaginate();
     }
 }
