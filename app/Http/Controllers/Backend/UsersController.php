@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use ActivismeBe\Http\Controllers\Controller;
 use ActivismeBe\Repositories\UserRepository;
 use ActivismeBe\Http\Requests\Backend\Users\CreateValidator;
-use ActivismeBe\Toastr\Toastr;
+use Toastr;
 
 /**
  * Class UsersController
@@ -58,8 +58,7 @@ class UsersController extends Controller
 
     /**
      * Store a new user in the application. 
-     * 
-     * @todo Build up the eloquent cread observer for confirmation mail and logger.
+     *
      * @todo Build up the PHPunit tests 
      * 
      * @param  CreateValidator $input The form request class that validate the user input.
@@ -70,9 +69,8 @@ class UsersController extends Controller
         $input->merge(['name' => "{$input->firstname} {$input->lastname}"]); 
 
         if ($user = $this->users->create($input->all())) { // User is declared to variable and saved in database
-            // Logs and email notification will be triggered in the 'created' observer from the model.
-            // The observer will also generate a password for the user. 
-            $user->assignRole('user');
+            Toastr::success(__('starter-translations::users.toastr.store.title'), __('starter-translations::users.toastr.store.message'));
+            $this->logUserActivity($user, __('starter-translations::users.activity.store', ['name' => $user->name]));
         }
 
         return redirect()->route('admin.users.index');
