@@ -3,7 +3,7 @@
 namespace ActivismeBe\Http\Controllers\Backend;
 
 use Illuminate\View\View;
-use Illuminate\Http\{Response, RedirectResponse};
+use Illuminate\Http\RedirectResponse;
 use ActivismeBe\Http\Controllers\Controller;
 use ActivismeBe\Repositories\UserRepository;
 use ActivismeBe\Http\Requests\Backend\Users\CreateValidator;
@@ -75,6 +75,6 @@ class UsersController extends Controller
             $user->assignRole('user');
         }
 
-        return redirect()->route('admin.users.index', [], Response::HTTP_CREATED);
+        return redirect()->route('admin.users.index');
     }
 }

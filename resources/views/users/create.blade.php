@@ -7,6 +7,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> {{ __('starter-translations::breadcrumb.dashboard') }} </a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}"> {{ __('starter-translations::users.titles.overview-short') }} </a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('starter-translations::users.titles.create') }}</li>
                     </ol>
                 </nav>
@@ -25,7 +26,7 @@
                             </label>
                             
                             <div class="col-4">
-                                <input type="text" class="form-control form-control-sm @error('firstname', 'is-invalid')" @input('lastname') id="inputFirstname" placeholder="{{ __('starter-translations::users.placeholders.firstname') }}">
+                                <input type="text" class="form-control form-control-sm @error('firstname', 'is-invalid')" @input('firstname') id="inputFirstname" placeholder="{{ __('starter-translations::users.placeholders.firstname') }}">
                                 @error('firstname')
                             </div>
 

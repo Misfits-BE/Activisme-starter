@@ -22,4 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Users Routes
 Route::get('/admin/users', 'Backend\UsersController@index')->name('admin.users.index');
 Route::get('/admin/users/create', 'Backend\UsersController@create')->name('admin.users.create');
-Route::get('/admin/users/store', 'Backend\UsersController@store')->name('admin.users.store');
+Route::post('/admin/users/store', 'Backend\UsersController@store')->name('admin.users.store');
