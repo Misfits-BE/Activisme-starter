@@ -13,6 +13,7 @@
         "laravel/tinker": "^1.0",
         "misfits/starter-translations": "dev-master",
         "misfits/toastr": "1.2.0",
+        "spatie/laravel-activitylog": "^2.7",
         "spatie/laravel-permission": "^2.12"
     },
     "require-dev": {
