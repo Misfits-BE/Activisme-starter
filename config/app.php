@@ -159,6 +159,7 @@ return [
         // ActivismeBe\Providers\BroadcastServiceProvider::class,
         ActivismeBe\Providers\EventServiceProvider::class,
         ActivismeBe\Providers\RouteServiceProvider::class,
+        ActivismeBe\Providers\ObserverServiceProvider::class,
 
     ],
 

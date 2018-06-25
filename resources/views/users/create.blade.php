@@ -16,7 +16,7 @@
                 <div class="card card-body">
                     <h6 class="border-bottom border-gray pb-2 mb-3">{{ __('starter-translations::users.titles.create') }}</h6>
                 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('admin.users.store') }}">
                         @csrf {{-- Form field protection --}}
 
                         <div class="form-group row">
