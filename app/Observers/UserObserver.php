@@ -25,9 +25,11 @@ class UserObserver extends BaseConstructor
     {
         $password = str_random(20);
 
-        if ($user->update(['password' => $password])) {
-            $when = now()->addMinute(); 
-            
+        if (auth()->check()) {
+            if ($user->update(['password' => $password])) {
+                $when = now()->addMinute(); 
+                
+            }
         }
     }
 }
