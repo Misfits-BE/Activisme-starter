@@ -12,6 +12,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "misfits/starter-translations": "dev-master",
+        "misfits/toastr": "^1.1",
         "spatie/laravel-permission": "^2.12"
     },
     "require-dev": {

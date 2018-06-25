@@ -95,6 +95,8 @@
         <main class="py-3">
             @yield('content')
         </main>
+
+        {!! Toastr::render() !!}
     </div>
 </body>
 </html>
