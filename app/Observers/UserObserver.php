@@ -3,6 +3,7 @@
 namespace ActivismeBe\Observers;
 
 use ActivismeBe\User;
+use ActivismeBe\Notifications\UserRegistered;
 
 /**
  * Class UserObserver 
@@ -13,7 +14,7 @@ use ActivismeBe\User;
  * @copyright   Tim Joosten <MIT license>
  * @package     ActivismeBe\Observers
  */
-class UserObserver extends BaseConstructor
+class UserObserver
 {
     /**
      * Handle to the user "created" event.
@@ -28,7 +29,7 @@ class UserObserver extends BaseConstructor
 
             if ($user->update(['password' => $password])) {
                 $when = now()->addMinute(); 
-                
+                $user->notify((new UserRegistered($user, $password))->delay($when));
             }
         }
     }
