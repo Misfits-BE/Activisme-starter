@@ -95,8 +95,10 @@
         <main class="py-3">
             @yield('content')
         </main>
-
-        {!! Toastr::render() !!}
     </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::render() !!}
 </body>
 </html>

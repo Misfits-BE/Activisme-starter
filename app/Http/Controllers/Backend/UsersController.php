@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use ActivismeBe\Http\Controllers\Controller;
 use ActivismeBe\Repositories\UserRepository;
 use ActivismeBe\Http\Requests\Backend\Users\CreateValidator;
+use ActivismeBe\Toastr\Toastr;
 
 /**
  * Class UsersController

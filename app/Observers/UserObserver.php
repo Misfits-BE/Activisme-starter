@@ -4,6 +4,7 @@ namespace ActivismeBe\Observers;
 
 use ActivismeBe\User;
 use ActivismeBe\Notifications\UserRegistered;
+use Toastr;
 
 /**
  * Class UserObserver 
@@ -30,6 +31,8 @@ class UserObserver
             if ($user->update(['password' => $password])) {
                 $when = now()->addMinute(); 
                 $user->notify((new UserRegistered($user, $password))->delay($when));
+
+                Toastr::success(__('starter-translations::users.toastr.store.title'), __('starter-translations::users.toastr.store.message'));
             }
         }
     }
