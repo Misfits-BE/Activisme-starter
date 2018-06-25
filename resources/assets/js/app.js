@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./../../../node_modules/toastr/toastr');
 
 window.Vue = require('vue');
 
