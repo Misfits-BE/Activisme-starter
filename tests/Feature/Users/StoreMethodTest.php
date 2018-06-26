@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Notification;
 use ActivismeBe\User;
 use ActivismeBe\Notifications\UserRegistered;
 use Spatie\Permission\Models\Role;
+use ActivismeBe\Toastr\Traits\WithToastr;
 
 /**
  * Class StoreMethodTest 
@@ -22,7 +23,7 @@ use Spatie\Permission\Models\Role;
  */
 class StoreMethodTest extends TestCase
 {
-    use RefreshDatabase, CreatesUsers, WithFaker;
+    use RefreshDatabase, CreatesUsers, WithFaker, WithToastr;
 
     /**
      * @test
@@ -68,8 +69,8 @@ class StoreMethodTest extends TestCase
             ->assertStatus(Response::HTTP_FOUND) // Code: 302
             ->assertRedirect(route('admin.users.index'));
 
-        // TODO: Implement session data check
-        dd(session()->all()); //! DEBUGGING PROPOSES
+        $this->assertHasToastr('success', __('starter-translations::users.toastr.store.message'), __('starter-translations::users.toastr.store.title'));
+        $this->assertDatabaseHas('users', ['name' => "{$input['firstname']} {$input['lastname']}", 'email' => $input['email']]);
 
         Notification::assertSentTo([User::where('email', $input['email'])->first()], UserRegistered::class);
     }
