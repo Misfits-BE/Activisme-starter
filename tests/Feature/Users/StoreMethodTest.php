@@ -96,7 +96,13 @@ class StoreMethodTest extends TestCase
      */
     public function validationFirstnameString(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['firstname' => rand(0, 25), 'lastname' => $this->faker->lastName, 'email' => $this->faker->email];
+        $user = $this->createUser('admin');
+
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['firstname' => __('validation.string', ['attribute' => 'firstname'])]);
     }
 
     /**
@@ -105,7 +111,15 @@ class StoreMethodTest extends TestCase
      */
     public function validationFirstnameMax255(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['firstname' => str_random(275), 'lastname' => $this->faker->lastname, 'email' => $this->faker->email]; 
+        $user = $this->createUser('admin'); 
+
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['firstname' => __('validation.max.string', [
+                'attribute' => 'firstname', 'max' => 255
+            ])]);
     }
 
     /**
@@ -114,7 +128,13 @@ class StoreMethodTest extends TestCase
      */
     public function validationLastnameRequired(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['firstname' => $this->faker->firstName, 'email' => $this->faker->email];
+        $user = $this->createUser('admin'); 
+
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['lastname' => __('validation.required', ['attribute' => 'lastname'])]);
     }
 
     /**
@@ -123,7 +143,13 @@ class StoreMethodTest extends TestCase
      */
     public function validationLastnameString(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['firstname' => $this->faker->firstname, 'lastname' => rand(0, 250), 'email' => $this->faker->email];
+        $user = $this->createUser('admin');
+        
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['lastname' => __('validation.string', ['attribute' => 'lastname'])]);
     }
 
     /**
@@ -132,7 +158,15 @@ class StoreMethodTest extends TestCase
      */
     public function validationLastnameMax255(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['lastname' => str_random(280), 'firstname' => $this->faker->firstName, 'email' => $this->faker->email]; 
+        $user = $this->createUser('admin'); 
+
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['lastname' => __('validation.max.string', [
+                'attribute' => 'lastname', 'max' => 255
+            ])]);
     }
 
     /**
@@ -141,7 +175,13 @@ class StoreMethodTest extends TestCase
      */
     public function validationEmailRequired(): void 
     {
-        $this->markAsRisky('TODO: Implement test');
+        $input = ['firstname' => $this->faker->firstName, 'lastname' => $this->faker->lastName];
+        $user = $this->createUser($user);
+
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['email' => __('validation.required', ['attribute' => 'email'])]);
     }
 
     /**
