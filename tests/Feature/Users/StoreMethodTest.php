@@ -75,58 +75,108 @@ class StoreMethodTest extends TestCase
         Notification::assertSentTo([User::where('email', $input['email'])->first()], UserRegistered::class);
     }
 
+    /**
+     * @test
+     * @testdox Test if the firstname field is required in the form 
+     */
     public function validationFirstnameRequired(): void 
     {
+        $input = ['lastname' => $this->faker->lastname, 'email' => $this->faker->email]; 
+        $user  = $this->createUser('admin');
 
+        $this->actingAs($user)
+            ->post(route('admin.users.store'), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['firstname' => __('validation.required', ['attribute' => 'firstname'])]);
     }
 
+    /**
+     * @test
+     * @testdox Test if the firstname field can only be an string data type
+     */
     public function validationFirstnameString(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox Test if the firstname field can only be max 255 characters
+     */
     public function validationFirstnameMax255(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox Test if the lastname field is required
+     */
     public function validationLastnameRequired(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test 
+     * @testdox Test if the lastname field only can be an string field
+     */
     public function validationLastnameString(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test 
+     * @testdox Test if the lastname field can only be max 255 characters
+     */
     public function validationLastnameMax255(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test 
+     * @testdox Test if the email field is required
+     */
     public function validationEmailRequired(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox Test if the email field can only be an string data type
+     */
     public function validationEmailString(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox Test if the email filed can only be max 255 characters
+     */
     public function validationEmailMax255(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox test if the email field actually contains a valid e-mail address
+     */
     public function validationEmailIsEmail(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 
+    /**
+     * @test
+     * @testdox Test if the email field value is unique in the users table.
+     */
     public function validationEmailUnique(): void 
     {
-
+        $this->markAsRisky('TODO: Implement test');
     }
 }
