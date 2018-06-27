@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Policy pages
+Route::get('privacy-policy', 'Frontend\PolicyController@privacy')->name('policy.privacy');
+
 // Users Routes
 Route::get('/admin/users', 'Backend\UsersController@index')->name('admin.users.index');
 Route::get('/admin/users/create', 'Backend\UsersController@create')->name('admin.users.create');

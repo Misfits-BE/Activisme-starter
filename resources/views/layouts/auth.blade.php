@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/front.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
@@ -57,7 +56,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-power-off text-white"></i>
+                                    <i class="fas fa-power-off"></i>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -70,24 +69,9 @@
             </div>
         </nav>
 
-        <main>
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-        <div class="col-6">
-            <span class="text-white"> &copy; {{ config('app.name') }}. All rights reserved
-        </div>
-        <div class="col-6 justify-content-end d-flex">
-            <a href="" class="text-white mr-1">Terms</a>
-            <span class="text-white">|</span>
-            <a href="{{ route('policy.privacy') }}" class="text-white ml-1">Privacy Policy</a>
-        </div>
-    </div>
-      </div>
-    </footer>
 </body>
 </html>

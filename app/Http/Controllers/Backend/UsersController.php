@@ -58,8 +58,6 @@ class UsersController extends Controller
 
     /**
      * Store a new user in the application. 
-     *
-     * @todo Build up the PHPunit tests 
      * 
      * @param  CreateValidator $input The form request class that validate the user input.
      * @return RedirectResponse
