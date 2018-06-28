@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
 
         // Execute other database seeds 
         $this->call(UsersTableSeeder::class); //! Covers also roles and permissions database table.
+        $this->call(FragmentsTableSeeder::class);
     }
 }

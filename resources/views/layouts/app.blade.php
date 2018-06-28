@@ -49,11 +49,24 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
+                            @role('admin')
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelled-by="adminDropdown">
+                                        <a class="dropdown-item" href="{{ url('home') }}">Admin panel</a>
+                                        <a class="dropdown-item" href="">Settings</a>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                </li>
+                            @endrole
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

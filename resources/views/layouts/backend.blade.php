@@ -48,7 +48,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('starter-translations::navigation.backend.fragments') }}</a>
+                            <a class="nav-link" href="{{ route('admin.fragments.index') }}">
+                                {{ __('starter-translations::navigation.backend.fragments') }}
+                            </a>
                         </li>
 
                         <li class="nav-item">
@@ -63,30 +65,21 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                {{ Auth::user()->name }}
+                            </a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-power-off text-danger"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-power-off text-danger"></i>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </a>
-                            </li>
-                        @endguest
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -26,3 +26,6 @@ Route::get('privacy-policy', 'Frontend\PolicyController@privacy')->name('policy.
 Route::get('/admin/users', 'Backend\UsersController@index')->name('admin.users.index');
 Route::get('/admin/users/create', 'Backend\UsersController@create')->name('admin.users.create');
 Route::post('/admin/users/store', 'Backend\UsersController@store')->name('admin.users.store');
+
+// Backend fragment routes
+Route::get('/admin/fragments', 'Backend\FragmentController@index')->name('admin.fragments.index');
