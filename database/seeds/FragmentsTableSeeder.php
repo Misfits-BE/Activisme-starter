@@ -26,5 +26,12 @@ class FragmentsTableSeeder extends Seeder
             'title' => 'Privacy Policy', 
             'content' => 'text for the privacy policy'
         ]);
+
+        Fragments::create([
+            'slug' => 'terms-of-service', 
+            'page' => 'Terms Of Service', 
+            'title' => 'Terms Of Service', 
+            'content' => 'text for terms of service',
+        ]);
     }
 }
