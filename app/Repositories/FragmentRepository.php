@@ -22,4 +22,14 @@ class FragmentRepository extends Repository
     {
         return Fragments::class;
     }
+
+    /**
+     * Get a page fragment based on the page name. 
+     * 
+     * @return Fragment
+     */
+    public function getPage(string $pageName): Fragments
+    {
+        return $this->model->where('page', $pageName)->firstOrFail();
+    }
 }

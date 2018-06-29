@@ -24,14 +24,14 @@ class FragmentsTableSeeder extends Seeder
             'slug' => 'privacy-policy', 
             'page' => 'Privacy Policy', 
             'title' => 'Privacy Policy', 
-            'content' => 'text for the privacy policy'
+            'content' => file_get_contents(resource_path('policies/privacy.' . config('app.locale') . '.txt'))
         ]);
 
         Fragments::create([
             'slug' => 'terms-of-service', 
             'page' => 'Terms Of Service', 
             'title' => 'Terms Of Service', 
-            'content' => 'text for terms of service',
+            'content' => file_get_contents(resource_path('policies/terms-of-service.' . config('app.locale') . '.txt')),
         ]);
     }
 }

@@ -95,7 +95,7 @@
             <span class="text-white"> &copy; {{ config('app.name') }}. All rights reserved
         </div>
         <div class="col-6 justify-content-end d-flex">
-            <a href="" class="text-white mr-1">Terms</a>
+            <a href="{{ route('policy.terms') }}" class="text-white mr-1">Terms</a>
             <span class="text-white">|</span>
             <a href="{{ route('policy.privacy') }}" class="text-white ml-1">Privacy Policy</a>
         </div>

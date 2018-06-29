@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Policy pages
 Route::get('privacy-policy', 'Frontend\PolicyController@privacy')->name('policy.privacy');
+Route::get('terms-of-service', 'Frontend\PolicyController@termsOfService')->name('policy.terms');
 
 // Users Routes
 Route::get('/admin/users', 'Backend\UsersController@index')->name('admin.users.index');

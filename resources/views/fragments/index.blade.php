@@ -36,7 +36,7 @@
 
                                     <td> {{-- Options --}}
                                         <span class="pull-right">
-                                            <a class="text-muted mr-2" href="">
+                                            <a class="text-muted mr-2" href="{{ url($fragment->slug) }}">
                                                 <i class="far fa-fw fa-eye"></i> {{ __('starter-translations::fragments.table.buttons.view') }}
                                             </a>
 
