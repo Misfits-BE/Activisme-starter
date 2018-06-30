@@ -6,7 +6,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> {{ __('starter-translations::breadcrumb.dashboard') }} </a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i> {{ __('starter-translations::breadcrumb.dashboard') }} </a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('starter-translations::users.titles.overview') }}</li>
                     </ol>
                 </nav>
@@ -42,6 +42,7 @@
                                         </tr>
                                     @endforeach {{-- /// END loop --}}
                                 @else {{-- No logins with the permission 'user' are found--}}
+                                    {{-- TODO: Create view partial --}}
                                 @endif
                             </tbody>
                         </table>

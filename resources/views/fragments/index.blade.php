@@ -40,7 +40,7 @@
                                                 <i class="far fa-fw fa-eye"></i> {{ __('starter-translations::fragments.table.buttons.view') }}
                                             </a>
 
-                                            <a class="text-muted" href="">
+                                            <a class="text-muted" href="{{ route('admin.fragments.edit', ['slug' => $fragment->slug]) }}">
                                                 <i class="far fa-fw fa-edit"></i> {{ __('starter-translations::fragments.table.buttons.edit') }}
                                             </a>
                                         </span>

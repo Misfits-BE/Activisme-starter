@@ -30,3 +30,4 @@ Route::post('/admin/users/store', 'Backend\UsersController@store')->name('admin.
 
 // Backend fragment routes
 Route::get('/admin/fragments', 'Backend\FragmentController@index')->name('admin.fragments.index');
+Route::get('/admin/fragments/edit/{slug}', 'Backend\FragmentController@edit')->name('admin.fragments.edit');

@@ -26,10 +26,22 @@ class FragmentRepository extends Repository
     /**
      * Get a page fragment based on the page name. 
      * 
-     * @return Fragment
+     * @param  string $slug Get a page fragment based on the page type. 
+     * @return Fragments
      */
     public function getPage(string $pageName): Fragments
     {
         return $this->model->where('page', $pageName)->firstOrFail();
+    }
+
+    /**
+     * Get a page fragment for update based on their slug
+     * 
+     * @param  string $slug The unique URI endpoint for the page fragment 
+     * @return Fragments
+     */
+    public function whereSlug(string $slug): Fragments 
+    {
+        return $this->model->where('slug', $slug)->firstOrFail();
     }
 }

@@ -12,13 +12,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+ 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    @stack('stylesheets') {{-- Stack for page specific css resources --}}
 </head>
 <body>
     <div id="app">
@@ -92,6 +93,7 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @stack('javascript') {{-- Stack for page specific javascript --}}
     {!! Toastr::render() !!}
 </body>
 </html>

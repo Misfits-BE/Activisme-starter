@@ -35,12 +35,24 @@ class FragmentController extends Controller
     /**
      * Get the management index view for the page fragments.
      * 
-     * @todo Implement phpunit test
-     * 
      * @return View
      */
     public function index(): View 
     {
         return view('fragments.index', ['fragments' => $this->fragmentRepository->simplePaginate()]);
+    }
+
+    /**
+     * The edit view for a page fragment in the application. 
+     * 
+     * @todo Build up the view
+     * 
+     * @param  string $slug The unique URI endpoint for the page fragment.
+     * @return View
+     */
+    public function edit(string $slug): View 
+    {
+        $fragment = $this->fragmentRepository->whereSlug($slug);
+        return view('fragments.edit', compact('fragment')); 
     }
 }
