@@ -3,8 +3,10 @@
 namespace ActivismeBe\Http\Controllers\Backend;
 
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use ActivismeBe\Http\Controllers\Controller;
 use ActivismeBe\Repositories\FragmentRepository;
+use ActivismeBe\Http\Requests\Backend\Fragments\UpdateValidator;
 
 /**
  * Class FragmentController
@@ -54,5 +56,20 @@ class FragmentController extends Controller
     {
         $fragment = $this->fragmentRepository->whereSlug($slug);
         return view('fragments.edit', compact('fragment')); 
+    }
+
+    /**
+     * Method for updating a page fragment in the database system 
+     * 
+     * @todo Build up validation 
+     * @todo Implement phpunit
+     * 
+     * @param  UpdateValidator $input The user given input from the form.
+     * @param  string          $slug  The unique identifier from the page fragment in the database. 
+     * @return RedirectResponse
+     */
+    public function update(UpdateValidator $input, string $slug): RedirectResponse
+    {
+        // 
     }
 }
