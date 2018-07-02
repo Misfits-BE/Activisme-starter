@@ -17,7 +17,7 @@
                 <div class="card card-body">
                     <h6 class="border-bottom border-gray pb-2 mb-3">{{ __('starter-translations::fragments.titles.edit', ['title' => $fragment->page]) }}</h6>
 
-                    <form action="{{ route('admin.fragments.update', ['slug' => $fragment->slug]) }}" method="POST">
+                    <form action="{{ route('admin.fragments.update', ['slug' => $fragment->slug]) }}" method="POST" class="needs-validation">
                         @csrf               {{-- Form field protection --}}
                         @method('PATCH')    {{-- HTTP method spoofing --}}
 
@@ -27,7 +27,8 @@
                             </label>
 
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="fragmentTitle" input="title" value="{{ $fragment->title ?? old('title') }}">
+                                <input type="text" class="form-control @error('title', 'is-invalid')" id="fragmentTitle" name='title' value="{{ $fragment->title ?? old('title') }}">
+                                @error('title', '<div class="invalid-feedback">:message</div>')
                             </div>
                         </div>
 
@@ -37,7 +38,8 @@
                             </label>
 
                             <div class="col-md-9">
-                                <textarea name="editor1" id="editor1" @input('content') class="form-control" rows="10" cols="80">{{ $fragment->content ?? old('content') }}</textarea>
+                                <textarea id="editor1" @input('content') class="form-control @error('content', 'is-invalid')" rows="10" cols="80">{{ $fragment->content ?? old('content') }}</textarea>
+                                @error('content', '<div class="invalid-feedback">:message</div>')
                             </div>
                         </div>
 

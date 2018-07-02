@@ -27,7 +27,6 @@ trait ActivityLog
         activity($logName)->performedOn($entity)->causedBy($authUser)->log($logMessage);
     }
 
-
     /**
      * Shorthand function for adding a log to the user section. (ACL)
      * 
@@ -38,5 +37,17 @@ trait ActivityLog
     public function logUserActivity($entity, string $message): void 
     {
         $this->add($entity, $message, 'users');
+    }
+
+    /**
+     * SHorthand function for adding a log to the fragment section. 
+     * 
+     * @param  mixed  $entity   The entity from the instance where the event has been happend on.
+     * @param  string $message  The log message that needs to be saved. 
+     * @return void
+     */
+    public function logFragmentActivity($entity, string $message): void 
+    {
+        $this->add($entity, $message, 'fragments');
     }
 }

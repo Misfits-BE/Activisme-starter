@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use ActivismeBe\Http\Controllers\Controller;
 use ActivismeBe\Repositories\FragmentRepository;
 use ActivismeBe\Http\Requests\Backend\Fragments\UpdateValidator;
+use Toastr;
 
 /**
  * Class FragmentController
@@ -61,7 +62,6 @@ class FragmentController extends Controller
     /**
      * Method for updating a page fragment in the database system 
      * 
-     * @todo Build up validation 
      * @todo Implement phpunit
      * 
      * @param  UpdateValidator $input The user given input from the form.
@@ -70,6 +70,16 @@ class FragmentController extends Controller
      */
     public function update(UpdateValidator $input, string $slug): RedirectResponse
     {
-        // 
+        $fragment = $this->fragmentRepository->whereSlug($slug); 
+        $input->merge(['editor_id' => $input->user()->id]);
+
+        if ($fragment->update($input->all())) {
+            $langKey = 'starter-translations::fragments';
+
+            $this->logFragmentActivity($fragment, __("{$langKey}.activity.update", ['user' => $input->user()->name, 'name' => $fragment->page])); 
+            Toastr::success(__("{$langKey}.toastr.update.message", ['name' => $fragment->page]), __("{$langKey}.toastr.update.title"));
+        }
+
+        return redirect()->route('admin.fragments.index');
     }
 }
