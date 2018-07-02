@@ -62,8 +62,6 @@ class FragmentController extends Controller
     /**
      * Method for updating a page fragment in the database system 
      * 
-     * @todo Implement phpunit
-     * 
      * @param  UpdateValidator $input The user given input from the form.
      * @param  string          $slug  The unique identifier from the page fragment in the database. 
      * @return RedirectResponse

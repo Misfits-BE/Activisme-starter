@@ -155,6 +155,12 @@ class UpdateMethodTest extends TestCase
      */
     public function validationContentString(): void 
     {
-        $fragment = facotry(Fragments::class)->create();
+        $fragment = factory(Fragments::class)->create();
+        $input = ['title' => $this->faker->paragraph, 'content' => rand(0, 250)];
+
+        $this->actingAs($this->createUser('admin'))
+            ->patch(route('admin.fragments.update', ['slug' => $fragment->slug]), $input)
+            ->assertStatus(Response::HTTP_FOUND) // Code: 302
+            ->assertSessionHasErrors(['content' => __('validation.string', ['attribute' => 'content'])]);
     }
 }
